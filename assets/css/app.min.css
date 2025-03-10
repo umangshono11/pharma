@@ -1510,7 +1510,7 @@ img {
   color: white;
 }
 .bg-heading {
-  background-color: var(--heading-color) !important;
+  background-color: #115D9D !important;
 }
 .white-bg1 {
   background-color: var(--white-bg) !important;
@@ -1643,7 +1643,7 @@ header.lonyo-header-section.lonyo-header-two.sticky-menu {
   line-height: 26px;
   font-weight: 500;
   color: white;
-  background-color: #142d6f;
+  background-color: #115D9D;
   padding: 10px 24px;
   border-radius: 3px;
   width: fit-content;
@@ -4991,7 +4991,7 @@ blockquote::before {
   transition: all 0.4s !important;
   margin-top: 100px;
   padding-right: 43px;
-  background-color: rgba(0, 26, 61, 0.5019607843);
+  background-color: rgb(25 65 120 / 50%);
   padding: 20px;
   height: 200px;
   border-radius: 15px;
