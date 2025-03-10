@@ -3798,7 +3798,7 @@ img.plasicon {
   border-radius: 10px;
   transition: all 0.4s !important;
   margin-bottom: 24px;
-  background-color: #142d6f;
+  background-color: #115D9D;
   border: 1px solid rgba(20, 45, 111, 0.1019607843);
 }
 .lonyo-pricing-wrap.active {
@@ -4991,6 +4991,10 @@ blockquote::before {
   transition: all 0.4s !important;
   margin-top: 100px;
   padding-right: 43px;
+  background-color: rgba(0, 26, 61, 0.5019607843);
+  padding: 20px;
+  height: 200px;
+  border-radius: 15px;
 }
 @media (max-width: 1199px) {
   .lonyo-process-wrap:last-child {
@@ -5010,9 +5014,9 @@ blockquote::before {
     margin-top: 60px;
   }
 }
-.lonyo-process-wrap:hover .lonyo-process-title::before {
+/* .lonyo-process-wrap:hover .lonyo-process-title::before {
   display: block;
-}
+} */
 .lonyo-process-number {
   padding-bottom: 24px;
 }
@@ -6851,14 +6855,14 @@ textarea::placeholder {
 .lonyo-default-btn.pricing-btn2,
 .lonyo-subcribe-btn.pricing-btn2 {
   color: var(--heading-color);
-  border: 1px solid var(--heading-color);
+  border: none;
   background-color: var(--white-color);
 }
 #lonyo-submit-btn.pricing-btn2:hover,
 .lonyo-default-btn.pricing-btn2:hover,
 .lonyo-subcribe-btn.pricing-btn2:hover {
   color: var(--light-color);
-  border: 1px solid var(--heading-color);
+  border: none;
 }
 #lonyo-submit-btn.pricing-btn2::after,
 .lonyo-default-btn.pricing-btn2::after,
@@ -7391,7 +7395,7 @@ textarea::placeholder {
   position: relative;
   transition: all 0.4s;
 }
-.breadcrumb-wrapper::before {
+/* .breadcrumb-wrapper::before {
   content: "";
   position: absolute;
   width: 200px;
@@ -7405,13 +7409,13 @@ textarea::placeholder {
   background: linear-gradient(47.56deg, #a3bdff -40.67%, #f6f4ef 78.6%);
   background-image: url("/assets/images/v1/medicine-3.png");
   background-size: cover;
-}
+} */
 @media (max-width: 1800px) {
   .breadcrumb-wrapper::before {
     display: none;
   }
 }
-.breadcrumb-wrapper::after {
+/* .breadcrumb-wrapper::after {
   content: "";
   position: absolute;
   width: 100px;
@@ -7426,7 +7430,7 @@ textarea::placeholder {
   background-image: url("/assets/images/v1/medicine-1.png");
   background-size: cover;
   
-}
+} */
 @media (max-width: 1800px) {
   .breadcrumb-wrapper::after {
     display: none;
