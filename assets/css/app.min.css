@@ -1625,8 +1625,9 @@ header.lonyo-header-section.lonyo-header-two.sticky-menu {
 }
 .lonyo-header-info-wraper2 {
   display: flex;
-  gap: 24px;
+  gap: 5px;
   align-items: center;
+  flex-wrap: wrap;
 }
 .lonyo-header-info-wrap2 {
   display: flex;
@@ -4991,7 +4992,7 @@ blockquote::before {
   transition: all 0.4s !important;
   margin-top: 100px;
   padding-right: 43px;
-  background-color: rgb(25 65 120 / 50%);
+  background-color: rgb(0 8 19 / 50%);
   padding: 20px;
   height: 200px;
   border-radius: 15px;
