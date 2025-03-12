@@ -1559,6 +1559,23 @@ img {
   .lonyo-header-section3 {
     padding: 20px 0;
   }
+  .main-menu a {
+    color: #142d6f;
+    font-weight: 400;
+    position: relative;
+    display: block;
+    transition: all 0.4s;
+    text-transform: capitalize;
+    font-size: 14px !important;
+    line-height: 1.3em;
+}
+.lonyo-header-info-content ul li a {
+  font-size: 12px !important;
+  line-height: 12px !important;
+  font-weight: 500;
+  color: white;
+}
+
 }
 header.lonyo-header-section.sticky-menu {
   box-shadow: 0 4px 80px 0 rgba(0, 0, 0, 0.0784313725);
@@ -7797,4 +7814,40 @@ a.lonyo-default-btn.sm-size {
   100% {
     transform: rotate(360deg);
   }
+}
+@media (max-width: 1400px) {
+  .main-menu a {
+    color: #142d6f;
+    font-weight: 400;
+    position: relative;
+    display: block;
+    transition: all 0.4s;
+    text-transform: capitalize;
+    font-size: 14px !important;
+    line-height: 1.3em;
+}
+.lonyo-header-info-content ul li a {
+  font-size: 12px !important;
+  line-height: 12px !important;
+  font-weight: 500;
+  color: white;
+}
+}
+@media screen and (max-width: 1440px) {
+  .main-menu a {
+    color: #142d6f;
+    font-weight: 400;
+    position: relative;
+    display: block;
+    transition: all 0.4s;
+    text-transform: capitalize;
+    font-size: 14px !important;
+    line-height: 1.3em;
+}
+.lonyo-header-info-content ul li a {
+  font-size: 12px !important;
+  line-height: 12px !important;
+  font-weight: 500;
+  color: white;
+}
 }
