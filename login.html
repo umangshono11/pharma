@@ -282,14 +282,14 @@
 <body id="login-body">
   <div class="container ">
     <div class="form-box login">
-      <form action="#">
+      <form id="loginForm">
         <h1>Login</h1>
         <div class="input-box">
-          <input type="text" placeholder="Username" required>
+          <input type="text" id="login-mobile" placeholder="Mobile No" required>
           <i class='bx bxs-user'></i>
         </div>
         <div class="input-box">
-          <input type="password" placeholder="Password" required>
+          <input type="password" id="login-password" placeholder="Password" required>
           <i class='bx bxs-lock-alt'></i>
         </div>
         <div class="forgot-link">
@@ -307,32 +307,32 @@
     </div>
 
     <div class="form-box register">
-      <form action="#">
+      <form id="registerForm">
         <h1>Registration</h1>
         <div class="input-box">
-          <input type="text" placeholder="Pharmacy Name" required>
+          <input type="text" id="pharmacy-name" placeholder="Pharmacy Name" required>
           <i class='bx bxs-store'></i>
         </div>
         <div class="input-box">
-          <input type="tel" placeholder="Mobile Number" required>
+          <input type="tel" id="mobile-number" placeholder="Mobile Number" required>
           <i class='bx bxs-phone'></i>
         </div>
         <div class="input-box">
-          <input type="email" placeholder="Email" required>
+          <input type="email" id="email" placeholder="Email" required>
           <i class='bx bxs-envelope'></i>
         </div>
         <div class="input-box">
-          <input type="text" placeholder="ZIP Code" required>
+          <input type="text" id="zip-code" placeholder="ZIP Code" required>
           <i class='bx bxs-map'></i>
         </div>
         <div class="input-box">
-          <input type="text" placeholder="Referral Code (Optional)">
+          <input type="text" id="referral-code" placeholder="Referral Code (Optional)">
           <i class='bx bxs-gift'></i>
         </div>
         <button type="submit" class="btn">Register</button>
       </form>
     </div>
-    
+
 
     <div class="toggle-box">
       <div class="toggle-panel toggle-left">
@@ -360,26 +360,100 @@
   <script src="main.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-    const container = document.querySelector('.container');
-    const registerBtn = document.querySelector('.register-btn');
-    const loginBtn = document.querySelector('.login-btn');
-    const registerForm = document.querySelector('.form-box.register'); // Registration form
-    const loginForm = document.querySelector('.form-box.login'); // Login form
+      const container = document.querySelector('.container');
+      const registerBtn = document.querySelector('.register-btn');
+      const loginBtn = document.querySelector('.login-btn');
+      const registerForm = document.querySelector('.form-box.register'); // Registration form
+      const loginForm = document.querySelector('.form-box.login'); // Login form
 
-    registerBtn.addEventListener('click', (e) => {
+      registerBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        container.classList.add('active'); 
+        container.classList.add('active');
         registerForm.style.visibility = 'visible'; // Ensure registration form is shown
         loginForm.style.visibility = 'hidden'; // Hide login form
-    });
+      });
 
-    loginBtn.addEventListener('click', (e) => {
+      loginBtn.addEventListener('click', (e) => {
         e.preventDefault();
         container.classList.remove('active');
         registerForm.style.visibility = 'hidden'; // Hide registration form
         loginForm.style.visibility = 'visible'; // Ensure login form is shown
+      });
     });
-});
+
+  </script>
+  <script>
+    const API_BASE_URL = "https://testadmin.pharma247.in/api";
+
+    // 🚀 Handle Login Form Submission
+    document.getElementById("loginForm").addEventListener("submit", async function (event) {
+      event.preventDefault(); // Prevent page reload
+
+      const mobile_number = document.getElementById("login-mobile").value;
+      const password = document.getElementById("login-password").value;
+
+      // Create FormData object
+      const formData = new FormData();
+      formData.append("mobile_number", mobile_number);
+      formData.append("password", password);
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/login`, {
+          method: "POST",
+          body: formData, // Send formData instead of JSON
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          alert("Login successful!");
+          console.log("User Data:", data);
+        } else {
+          alert("Login failed: " + data.message);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    });
+
+  </script>
+  <script>
+    // 🚀 Handle Registration Form Submission
+    document.getElementById("registerForm").addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const pharmacy_name = document.getElementById("pharmacy-name").value;
+      const mobile_number = document.getElementById("mobile-number").value;
+      const email = document.getElementById("email").value;
+      const zip_code = document.getElementById("zip-code").value;
+      const referral_code = document.getElementById("referral-code").value;
+
+      // Create FormData object
+      const formData = new FormData();
+      formData.append("pharmacy_name", pharmacy_name);
+      formData.append("mobile_number", mobile_number);
+      formData.append("email", email);
+      formData.append("zip_code", zip_code);
+      formData.append("referral_code", referral_code);
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/resgiter`, {
+          method: "POST",
+          body: formData, // Send formData instead of JSON
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          alert("Registration successful!");
+          console.log("User Registered:", data);
+        } else {
+          alert("Registration failed: " + data.message);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    });
 
   </script>
 </body>
