@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login/Signup Form</title>
-  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="style.css"> -->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -331,6 +331,19 @@
         </div>
         <button type="submit" class="btn">Register</button>
       </form>
+
+      <form id="otpPasswordForm" style="display:none;">
+        <h1>Verify OTP & Set Password</h1>
+        <div class="input-box">
+          <input type="text" id="otp" placeholder="Enter OTP" required>
+          <i class='bx bxs-lock'></i>
+        </div>
+        <div class="input-box">
+          <input type="password" id="password" placeholder="Set Password" required>
+          <i class='bx bxs-key'></i>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+      </form>
     </div>
 
 
@@ -357,7 +370,7 @@
     </div>
   </div>
 
-  <script src="main.js"></script>
+  <!-- <script src="main.js"></script> -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const container = document.querySelector('.container');
@@ -418,43 +431,76 @@
 
   </script>
   <script>
-    // 🚀 Handle Registration Form Submission
     document.getElementById("registerForm").addEventListener("submit", async function (event) {
-      event.preventDefault();
+    event.preventDefault();
 
-      const pharmacy_name = document.getElementById("pharmacy-name").value;
-      const mobile_number = document.getElementById("mobile-number").value;
-      const email = document.getElementById("email").value;
-      const zip_code = document.getElementById("zip-code").value;
-      const referral_code = document.getElementById("referral-code").value;
+    const pharmacy_name = document.getElementById("pharmacy-name").value;
+    const mobile_number = document.getElementById("mobile-number").value;
+    const email = document.getElementById("email").value;
+    const zip_code = document.getElementById("zip-code").value;
+    const referral_code = document.getElementById("referral-code").value;
 
-      // Create FormData object
-      const formData = new FormData();
-      formData.append("pharmacy_name", pharmacy_name);
-      formData.append("mobile_number", mobile_number);
-      formData.append("email", email);
-      formData.append("zip_code", zip_code);
-      formData.append("referral_code", referral_code);
+    const formDataOne = JSON.stringify({
+  pharmacy_name,
+  mobile_number,
+  email,
+  zip_code,
+  referral_code
+});
 
-      try {
-        const response = await fetch(`${API_BASE_URL}/resgiter`, {
-          method: "POST",
-          body: formData, // Send formData instead of JSON
-        });
+    try {
+      const response = await fetch(`${API_BASE_URL}/resgiter`, {
+        method: "POST",
+        body: formDataOne,
+      });
 
-        const data = await response.json();
+      const data = await response.json();
 
-        if (response.ok) {
-          alert("Registration successful!");
-          console.log("User Registered:", data);
-        } else {
-          alert("Registration failed: " + data.message);
-        }
-      } catch (error) {
-        console.error("Error:", error);
+      if (response.ok) {
+        alert("OTP sent to your mobile number!");
+        document.getElementById("registerForm").style.display = "none";
+        document.getElementById("otpPasswordForm").style.display = "block";
+      } else {
+        alert("Registration failed: " + data.message);
       }
-    });
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  });
 
+  document.getElementById("otpPasswordForm").addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const otp = document.getElementById("otp").value;
+    const password = document.getElementById("password").value;
+
+    const formData = JSON.stringify({
+  pharmacy_name,
+  mobile_number,
+  email,
+  zip_code,
+  referral_code,
+  otp,
+  password
+});
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/resgiter`, { 
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("Account created successfully!");
+      } else {
+        alert("OTP verification failed: " + data.message);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  });
   </script>
 </body>
 
